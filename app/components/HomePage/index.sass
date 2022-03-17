@@ -2,6 +2,11 @@
 
 @import 'mixins'
 
+.home
+  display: flex
+  flex-direction: column
+  width: 100%
+
 .hp-track-list-wrapper
   width: 60%
   float: left
@@ -16,9 +21,11 @@
     height: 80px
     font-size: 14px
     position: relative
+    background: $first-color
     transition: transform 0.3s ease-in-out
-    box-shadow: 0 0 8px rgba(0,0,0,.3)
-    margin-bottom: 10px
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-bottom: 20px
+    border-radius: 15px
     &:hover
       cursor: pointer
     > div
@@ -33,9 +40,9 @@
   filter: blur(2px);
 
 .track-thumb
-  padding: 10px 20px 10px 0
-  width: 80px
-  height: 100%
+  padding: .5rem
+  img
+    border-radius: 5px
   float: left
 .trackPosition
   line-height: 80px
@@ -43,19 +50,18 @@
   text-align: center
   width: 10%
   float: left
+  color: #fff
 .trackDetail
   width: calc(100% - 40% - 80px)
   float: left
   padding: 10px 0
-.homepage
-  background-color: #fff
 
 .trackTitle
   margin-top: 10px
   a
-    color: $grey-text
+    color: #fff
     &:hover
-      text-decoration: underline
+      color: $grey-text
 .trackArtist
   margin-top: 10px
   a
@@ -130,8 +136,9 @@ i.ion-more
     left: 0
     right: 0
     z-index: 1
-    background: #fff
-    color: #95A5A6
+    border-radius: 10px
+    background: $first-color
+    color: #fff
     box-shadow: 0 1px 8px rgba(0,0,0,.2)
 
     li
@@ -160,15 +167,17 @@ i.ion-more
     &:not(.chart-panel-btn-active)
       color: #5D6D7E !important
     height: 100%
+    font-weight: 500
     width: calc(100% / 3)
     cursor: pointer
     &:hover
       border: 1px solid #27DED5
 
 .home-banner
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/home-banner-compressed.jpg');
   height: 300px
-  background-size: cover
+  padding-top: 50px
+  width: 100%
+  object-fill: cover
   display: flex
   justify-content: center
   align-items: center
@@ -179,9 +188,14 @@ i.ion-more
 .home-banner-text
   color: white
   font-weight: 700
-  margin: 0
+  top: 40%
+  left: 40%
+  bottom: 20px
+  transform: translate(50, 50)
   font-family: 'Montserrat', sans-serif
   font-size: 40px
+  z-index: 99
+  position: absolute
 
 .developed-by 
   position: absolute

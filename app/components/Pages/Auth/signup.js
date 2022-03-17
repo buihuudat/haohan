@@ -56,7 +56,7 @@ class SignUpPage extends React.Component {
 
     return (
       <div className={className}>
-        Sign Up Below:
+        <h1>Sign Up Below </h1>
         <br />
         <br />
         <div>

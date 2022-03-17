@@ -17,7 +17,6 @@ class TrackList extends React.Component {
 
   render() {
     const { isFading } = this.props;
-    console.log(this.props);
     return (
       <div className='hp-track-list-wrapper'>
         <ul className={`hp-track-list ${isFading ? 'isFading' : ''}`}>

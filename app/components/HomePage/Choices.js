@@ -42,7 +42,9 @@ class Choices extends Component {
           <ul className="choice-list">
             {
               Object.keys(datas).map(key =>
-                <li key={key} onClick={this.handleOnClick.bind(this, key)}>{datas[key]}</li>
+                <li key={key} onClick={this.handleOnClick.bind(this, key)}>
+                  {datas[key]}
+                </li>
               )
             }
           </ul>

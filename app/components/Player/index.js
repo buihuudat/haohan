@@ -321,7 +321,7 @@ class Player extends React.PureComponent {
             <img src="/svg/playlist.svg" />
           </button>
         </div>
-        {this.props.isFetching && <PlayerLoader />}
+        {/* {this.props.isFetching && <PlayerLoader />} */}
       </div>
     );
   }

@@ -1,9 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TrackList from "./TrackList";
-import Chart from "../Chart";
-import Choices from "./Choices";
-import "./index.sass";
+import React from 'react';
+import PropTypes from 'prop-types';
+import TrackList from './TrackList';
+import Chart from '../Chart';
+import Choices from './Choices';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import LazyloadImage from '../LazyloadImage';
+import './index.sass';
 
 class ChartPanel extends React.Component {
   state = { activeChart: "pop" };
@@ -15,24 +18,26 @@ class ChartPanel extends React.Component {
 
   render() {
     const list = [
-      { alias: "pop", title: "Top 10 Billboard" },
-      { alias: "kpop", title: "K-Pop Chart" },
-      { alias: "vpop", title: "V-Pop Chart" },
+      { alias: 'pop', title: 'Top 10 Billboard' },
+      { alias: 'kpop', title: 'K-Pop Chart' },
+      { alias: 'vpop', title: 'vV-Pop Chart' },
     ];
     const { activeChart } = this.state;
     return (
-      <div className="chart-panel">
-        {list.map((item) => (
-          <button
-            key={item.alias}
-            onClick={() => this.handleOnClick(item.alias)}
-            className={`sc-ir ${
-              activeChart === item.alias ? "chart-panel-btn-active" : ""
-            }`}
-          >
-            {item.title}
-          </button>
-        ))}
+      <div>
+        <div className="chart-panel">
+          {list.map((item) => (
+            <button
+              key={item.alias}
+              onClick={() => this.handleOnClick(item.alias)}
+              className={`sc-ir ${
+                activeChart === item.alias ? "chart-panel-btn-active" : ""
+              }`}
+            >
+              {item.title}
+            </button>
+          ))}
+        </div>
       </div>
     );
   }
@@ -40,12 +45,22 @@ class ChartPanel extends React.Component {
 
 const HomePage = (props) => (
   <div>
-    <div className="home-banner">
-      <h2 className="home-banner-text">
-        <span style={{ color: "#10c7fd" }}>Listen</span> to music for free, no
-        ads
-      </h2>
-    </div>
+     <Carousel 
+      interval={5000} 
+      showStatus={false}
+      autoPlay={true}  
+      infiniteLoop={true}
+      showThumbs={false}
+      showIndicators={false}
+    >
+    {
+      props.tracks.map((e, i) => 
+      <div>
+        <LazyloadImage src={e.thumbnail} className="home-banner track-thumb image-wrapper" />
+        {/* <p className="home-banner-text">{e.title}</p> */}
+      </div>
+    )}
+    </Carousel>
     <div className="homepage home-container">
       <div className="home-nav">
         <Choices

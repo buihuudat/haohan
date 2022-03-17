@@ -58,7 +58,7 @@ class LogInPage extends React.Component {
 
     return (
       <div className={className}>
-        Log in to download songs for free
+        <h1>Welcome</h1>
         <br />
         <br />
         <div>

@@ -5,18 +5,18 @@ const ZingMp3 = require("../../../lib/ZingMP3");
 const { ECHO_API } = require("const");
 
 module.exports = function getTop100(req, res, next) {
-  const [popId, kpopId, vpopId] = ["ZWZB96AB", "ZWZB96DC", "ZWZB969E"];
+  const [vpopId, popId, kpopId] = ["ZWZB969E", "ZWZB96AB", "ZWZB96DC"];
   let id;
 
   switch (req.params.type) {
+    case vpopId:
+      id = vpopId;
+      break;
     case popId:
       id = popId;
       break;
     case kpopId:
       id = kpopId;
-      break;
-    case vpopId:
-      id = vpopId;
       break;
     default:
   }

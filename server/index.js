@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
@@ -5,6 +6,7 @@ const http = require('http');
 const path = require('path');
 const morgan = require('morgan');
 const debug = require('debug');
+
 
 const info = debug('server:app:info');
 const error = debug('server:app:error');
@@ -34,12 +36,11 @@ if (env === 'production') {
 app.use(compression());
 app.use(express.static('public'));
 app.use(bodyParser.json());
-
 // routes
 routes(app);
 
 process.on('uncaughtException', (err) => {
-  error('crashed!!! - ' + (err.stack || err));
+  error(`crashed!!! - ${err.stack || err}`);
 });
 
 const PORT = process.env.PORT || 3000;

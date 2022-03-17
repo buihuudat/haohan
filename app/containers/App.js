@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import { Nav, Analyzer } from "../components";
-import * as Containers from "./";
+import React from 'react';
+import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { Nav, Analyzer } from '../components';
+import * as Containers from './';
 
 class App extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class App extends React.Component {
       showQueue,
       slideInRight,
     } = this.props;
-    const className = `container animated ${slideInRight && "slideInRight"}`;
+    const className = `container animated ${slideInRight && 'slideInRight'}`;
 
     return (
       <div>
@@ -24,7 +24,7 @@ class App extends React.Component {
         <Containers.Queue show={showQueue} />
         {showPlayer ? <Containers.Player /> : null}
         <Containers.Modal />
-        <ToastContainer position="top-right" autoClose={1000} />
+        <ToastContainer position='top-right' autoClose={1000} />
       </div>
     );
   }

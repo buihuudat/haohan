@@ -1,22 +1,25 @@
 @import 'colors'
 
 .player
-  height: 48px
-  border-top: 1px solid #e3e3e3
+  padding: 0 20px
+  height: 70px
+  width: 60%
+  box-shadow: 0px 3px 3px $second-color, 0px -3px 3px #111;
   position: fixed
   z-index: 300
-  min-width: 1120px
   display: flex
   align-items: center
+  margin: 0 auto
+  border-top-right-radius: 20px
+  border-top-left-radius: 20px
   bottom: 0
   right: 0
   left: 0
-  padding: 0 5%
-  background: white
+  background: $second-color
 
 img.player-song-thumbnail
-    height: 90%
-    width: 3.5%
+    height: 100%
+    width: auto
     display: block
     float: left
 .player-info
@@ -24,7 +27,8 @@ img.player-song-thumbnail
   float: left
   font-size: 13px
   width: 20%
-  padding: 5px 20px
+  padding: 10px 20px
+  
   span
     display: block
     font-weight: 600
@@ -43,7 +47,7 @@ img.player-song-thumbnail
 
 .player-song-title
   font-size: 15px
-  color: #70777d
+  color: #fff
   &:hover
     color: #a8adb1
 .player-seek
@@ -81,7 +85,7 @@ img.player-song-thumbnail
     opacity: 1.0
   i
 
-    color: #34495E
+    color: $decor-color
     font-size: 16px
 
 #queue
