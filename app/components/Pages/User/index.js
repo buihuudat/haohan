@@ -38,13 +38,23 @@ class UserPage extends React.Component {
           type="text"
           placeholder="Enter the playlist title"
           className="form-control"
-          ref={node => this.input = node}
+          ref={ node => (this.input = node)}
         />
       </form>;
   }
 
   render() {
     const { playlists } = this.props;
+
+    const fileSelected = (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.props.dispatch(fetchSong(e.target.result));
+      };
+      reader.readAsDataURL(file);
+      console.log(e);
+    }
 
     return (
       <div className="user-page">
@@ -62,6 +72,41 @@ class UserPage extends React.Component {
               {...this.props}
             />
           )}
+        </div>
+        <div className='user-page-center'>
+          <div className='user-page-content'>
+            <div className='user-page-content-title'>Account Setting</div>
+            <div className='up-content-bottom'>
+              <div className='up-content-left'>
+                <img src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/86b28bab-e605-4840-beaa-a8217598dec8/df1w3my-c9067607-dc8c-4bd4-be2a-2ade2709a7d3.jpg/v1/fit/w_300,h_900,q_70,strp/_comm____headshot_by_evilinspiration_df1w3my-300w.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcLzg2YjI4YmFiLWU2MDUtNDg0MC1iZWFhLWE4MjE3NTk4ZGVjOFwvZGYxdzNteS1jOTA2NzYwNy1kYzhjLTRiZDQtYmUyYS0yYWRlMjcwOWE3ZDMuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.mR7SBBtJ21Dcv7i_JReksLhDL92cTTkWqBXzwceWwDQ'/>
+                <div className='up-content-left-btn'>
+                  <label for="changeAvatar"><button>Change Avatar</button></label>
+                  <input onChange={''} type="file" id="changeAvatar"/>
+                </div>
+              </div>
+              <div className='up-content-right'>
+                <form>
+                  <div className='up-form-label'>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name"/>
+                  </div>
+                  <div className='up-form-label'>
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email"/>
+                  </div>
+                  <div className='up-form-label'>
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone"/>
+                  </div>
+                  <div className='up-form-label'>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password"/>
+                  </div>
+                  <input type={'submit'} className='up-form-submit' value='Save'/>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
