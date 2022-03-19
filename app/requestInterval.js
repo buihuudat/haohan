@@ -1,7 +1,8 @@
 const requestInterval = function (fn, delay) {
   if (!window.requestAnimationFrame &&
     !window.webkitRequestAnimationFrame &&
-    !(window.mozRequestAnimationFrame && window.mozCancelRequestAnimationFrame) &&
+    !(window.mozRequestAnimationFrame &&
+    window.mozCancelRequestAnimationFrame) &&
     !window.oRequestAnimationFrame &&
     !window.msRequestAnimationFrame)
 

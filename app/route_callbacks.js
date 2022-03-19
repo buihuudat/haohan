@@ -38,9 +38,9 @@ function shouldGetChart(charts, type) {
 export function getCharts() {
   const state = store.getState();
   const charts = state.chartState;
+  if (shouldGetChart(charts, 'vpop')) store.dispatch(getChart('vpop'));
   if (shouldGetChart(charts, 'pop')) store.dispatch(getChart('pop'));
   if (shouldGetChart(charts, 'kpop')) store.dispatch(getChart('kpop'));
-  if (shouldGetChart(charts, 'vpop')) store.dispatch(getChart('vpop'));
 }
 
 export function getPlaylistOnEnter() {

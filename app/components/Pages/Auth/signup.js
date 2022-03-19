@@ -12,9 +12,12 @@ class SignUpPage extends React.Component {
 
   state = {
     animate: false,
+    fullname: '',
+    email: '',
     username: '',
     password: '',
     passwordConfirmation: '',
+    phone: '',
   };
 
   componentDidMount() {
@@ -40,12 +43,15 @@ class SignUpPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { username, password, passwordConfirmation } = this.state;
+    const { fullname, email, username, password, passwordConfirmation, phone } = this.state;
 
     this.props.dispatch(signup({
+      fullname,
+      email,
       username,
       password,
       passwordConfirmation,
+      phone,
     }));
   }
 
@@ -62,11 +68,23 @@ class SignUpPage extends React.Component {
         <div>
           <form onSubmit={this.onSubmit.bind(this)}>
             <TextInputGroup
+              placeholder="Full Name"
+              name="fullname"
+              error={errors.fullname}
+              onChange={this.onChange.bind(this)}
+            />
+            <TextInputGroup
+              type="email"
+              placeholder="Email"
+              name="email"
+              error={errors.email}
+              onChange={this.onChange.bind(this)}
+            />
+            <TextInputGroup
               placeholder="Username"
               name="username"
               error={errors.username}
               onChange={this.onChange.bind(this)}
-
             />
             <TextInputGroup
               type="password"
@@ -80,6 +98,12 @@ class SignUpPage extends React.Component {
               placeholder="Confirm your password"
               name="passwordConfirmation"
               error={errors.passwordConfirmation}
+              onChange={this.onChange.bind(this)}
+            />
+            <TextInputGroup
+              placeholder="Phone"
+              name="phone"
+              error={errors.phone}
               onChange={this.onChange.bind(this)}
             />
             <button

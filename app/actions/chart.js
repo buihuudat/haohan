@@ -32,7 +32,7 @@ export function getChart(popType) {
         }
       })
       .catch((err) => {
-        console.log("fail haha ");
+        console.log(err);
         throw err;
       });
   };

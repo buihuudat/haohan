@@ -1,7 +1,7 @@
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { IndexLink, Link } from 'react-router';
 import { logout } from '../../actions/auth';
 import { clearUserPlaylist } from '../../actions/user_playlist';
@@ -57,9 +57,10 @@ class Nav extends React.Component {
     this.context.router.push('/');
   }
 
+
   render() {
     const { authenticated, user } = this.props.auth;
-
+    
     return (
       <nav>
         <div className='nav__top'>
@@ -102,22 +103,25 @@ class Nav extends React.Component {
             ) : (
               <div className='user'>
                 <div className='user-top'>
-                  <img className='auth-btns-img' src='https://media.istockphoto.com/photos/young-handsome-african-man-wearing-headphones-listening-to-music-and-picture-id1320722438?b=1&k=20&m=1320722438&s=170667a&w=0&h=7bJUiK2c6k3GaWIeUOjaJw0B090nxqlGYU_vhK300WY='/>
-                  {/* <img className='auth-btns-img' src={user.avatar}/> */}
+                  {/* <img className='auth-btns-img' src='https://media.istockphoto.com/photos/young-handsome-african-man-wearing-headphones-listening-to-music-and-picture-id1320722438?b=1&k=20&m=1320722438&s=170667a&w=0&h=7bJUiK2c6k3GaWIeUOjaJw0B090nxqlGYU_vhK300WY='/> */}
+                  <img className='auth-btns-img' src={user.avatar}/>
                   <div className='user-content'>
-                    <Link
-                      to={`/user/${user.username}`}
-                      className='animating_link ellipsis'
-                    >
-                      {user.username}
-                    </Link>
+                    <div className='user-name'>
+                      {user.fullname}
+                    </div>
                     <span>
-                      {user.primary}
-                      VIP
+                      {user.primary === '0' ?
+                      'ADMIN' :
+                      user.primary === '1' ?
+                      'Premium' : 'Normal'}
                     </span>
                   </div>
                 </div>
-                
+                <Link
+                  to={`/user/${user.username}`}
+                >
+                  <button className='user-profile'>View Profile</button>
+                </Link>
               </div>
             )}
             <div className='navContent'>
@@ -163,6 +167,36 @@ class Nav extends React.Component {
                   </Link>
                 </li>
               </ul>
+              {authenticated ? (
+                <div>
+                <ul className='nav-playlist nav-menu'>
+                  <li>
+                    <IndexLink
+                      to={`/playlist/${user.username}`}
+                      className='animating_link'
+                      activeClassName='nav-menu-link-active'
+                    >
+                      <i className="ion-ios-list-outline"></i>
+                      <span>My Playlist</span>
+                    </IndexLink>
+                  </li>
+                </ul>
+
+                {user.primary === '2' ? (
+                  <div className='nav-upgrade'>
+                    <span>- Limited Time Only -</span>
+                    <h1>50% OFF SALE</h1>
+                    <span>What will you receive ?</span>
+                    <ul>
+                      <li>Unlock all Songs</li>
+                      <li>Unlimited song download</li>
+                    </ul>
+                    <button>Upgrade Now !!!</button>
+                  </div>
+                ) : null}
+                </div>
+              ) : null}
+
               {!authenticated ? (<div></div>) : (
                 <div className='user-top-logout'>
                   <a
@@ -176,6 +210,7 @@ class Nav extends React.Component {
                 </div>
               )}
             </div>
+
           </div>
         </div>
       </nav>

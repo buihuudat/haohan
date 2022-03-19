@@ -5,10 +5,15 @@ const getToken = require('../utils/getTokenForUser');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  fullname: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
   username: { type: String, unique: true },
   password: String,
+  phone: String,
+  avatar: { type: String, default: 'https://i.pinimg.com/originals/9d/05/86/9d0586ac63b7e7a30a6ffafcbb4e0a93.gif' },
+  primary: { type: String, default: '2' },
   access_token: String,
-});
+}, { timestamps: true });
 
 userSchema.pre('save', function (next) {
   const user = this;

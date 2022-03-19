@@ -4,7 +4,7 @@ import { Pages } from '../components';
 import { logout } from '../actions/auth';
 import { isAuthenticated } from '../HOC';
 
-class UserPageContainer extends Component {
+class UserPlaylist extends Component {
   componentDidMount() {
     const { authenticated, params, user, redirectTo } = this.props;
     if (authenticated && params.username !== user.username) {
@@ -18,12 +18,17 @@ class UserPageContainer extends Component {
 
   render() {
     return (
-      <Pages.UserPage
-        user={this.props.user}
+      <Pages.UserPlaylist
+        playlists={this.props.playlists}
+        dispatch={this.props.dispatch}
+        songData={this.props.songData}
       />
     );
   }
 }
 
+function mapStateToProps({ playlistState, songData }) {
+  return { playlists: playlistState.playlists, songData: songData.data };
+}
 
-export default (isAuthenticated(UserPageContainer));
+export default connect(mapStateToProps)(isAuthenticated(UserPlaylist));

@@ -13,7 +13,10 @@ const instance = (accessToken) => {
 };
 
 let cachedUser = {
+  email: '',
   username: '',
+  avatar: '',
+  primary: '',
   access_token: '',
 };
 

@@ -55,7 +55,7 @@ const HomePage = (props) => (
     >
     {
       props.tracks.map((e, i) => 
-      <div>
+      <div key={e}>
         <LazyloadImage src={e.thumbnail} className="home-banner track-thumb image-wrapper" />
         {/* <p className="home-banner-text">{e.title}</p> */}
       </div>

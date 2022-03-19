@@ -19,8 +19,8 @@ module.exports = function (req, res, next) {
             throw err;
           }
 
-          const { username, _id } = user;
-          req.currentUser = { username, _id };
+          const { fullname, username, email, avatar, primary, _id } = user;
+          req.currentUser = { fullname, username, email, avatar, primary, _id };
 
           return next();
         })

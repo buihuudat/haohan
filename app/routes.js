@@ -26,7 +26,9 @@ export default (
 
     <Route path='signup' component={Containers.SignUpPage} />
 
-    <Route path='user/:username' component={Containers.UserPage} onEnter={getPlaylistOnEnter}/>
+    <Route path='user/:username' component={Containers.UserPage} />
+
+    <Route path='playlist/:username' component={Containers.UserPlaylist} onEnter={getPlaylistOnEnter}/>
 
     <Route path='/notfound/song' component={NotFoundSong} />
 

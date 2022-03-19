@@ -9,7 +9,6 @@ export function login(userCredentials) {
     axios.post(`${USER_ENDPOINT}/login`, userCredentials)
     .then(({ data: user }) => {
       localStorage.setItem('user', JSON.stringify(user));
-
       dispatch({ type: types.LOG_IN_SUCCESS, user });
       dispatch({ type: types.FINISH_PROCESSING });
     })
@@ -25,6 +24,24 @@ export function signup(userCredentials) {
     dispatch({ type: types.START_PROCESSING });
 
     axios.post(`${USER_ENDPOINT}/signup`, userCredentials)
+    .then(({ data: user }) => {
+      localStorage.setItem('user', JSON.stringify(user));
+
+      dispatch({ type: types.SIGN_UP_SUCCESS, user });
+      dispatch({ type: types.FINISH_PROCESSING });
+    })
+    .catch(err => {
+      dispatch({ type: types.SIGN_UP_FAILURE, errors: err.response.data.errors });
+      dispatch({ type: types.FINISH_PROCESSING });
+    });
+  };
+}
+
+export function user(userCredentials) {
+  return dispatch => {
+    dispatch({ type: types.START_PROCESSING });
+
+    axios.post(`${USER_ENDPOINT}/user`, userCredentials)
     .then(({ data: user }) => {
       localStorage.setItem('user', JSON.stringify(user));
 

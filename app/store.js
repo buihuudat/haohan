@@ -12,7 +12,6 @@ if (process.env.NODE_ENV !== 'production') {
 
   middleware = [...middleware/* , logger */];
 }
-
 const queueFromLocalStorage = loadQueueState();
 const persistedData = {
   queueState: queueFromLocalStorage,

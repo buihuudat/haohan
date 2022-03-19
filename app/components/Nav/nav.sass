@@ -16,9 +16,9 @@
 
 .nav__left
   height: 100%
+  width: 250px
   background: $first-color
   position: fixed
-  width: 300px
   z-index: 3
   padding: 0 20px
   left: 0
@@ -72,20 +72,21 @@
 .nav-menu
   display: flex
   flex-direction: column
-  height: 100%
   width: 100%
-  padding-top: 3rem
+  padding-top: .8rem
   li
     display: flex
     text-align: center
     justify-content: center
+    width: 100%
     
     i
       font-size: 1.8rem
+      width: 20%
     a
       text-transform: uppercase
       display: flex
-      width: 50%
+      width: 80%
       gap: 20px
       line-height: 50px
       vertical-align: middle
@@ -127,8 +128,8 @@
     color: white
 
 .auth-btns-img
-    width: 120px
-    height: 120px
+    width: 90px
+    height: 90px
     margin: 0 auto
     background: #999
     border-radius: 50%
@@ -155,6 +156,8 @@
     width: 100%
     padding: .5rem
     transition: .3s ease
+    border-radius: 5px
+
     &:hover 
       background: $cyan-1
     a
@@ -173,13 +176,23 @@
         height: 25px
 
 .user
-  padding-top: 2rem
   height: max-content
   width: 100%
   display: flex
   flex-direction: column
   line-height: 50px
   vertical-align: middle
+
+  &-profile
+    margin-top: 1rem
+    width: 100%
+    height: 35px
+    background: none
+    border: 1px solid $cyan-1
+    border-radius: 20px
+    color: #fff
+    font-size: .9rem
+    cursor: pointer
 
 .user-top
   display: flex
@@ -196,24 +209,22 @@
     font-size: 12px
     font-weight: 500
     border: 1px solid $cyan-1
+    border-radius: 10px
 
-  a
+  .user-name
     text-transform: uppercase
     display: flex
     gap: 10px
     align-items: center
     justify-content: center
     height: 50px
-    font-size: 13px
+    font-size: 1rem
     padding: 5px 8px
     border-radius: 3px
     width: 100%
     color: white
     font-weight: 600
-    span
 
-    &:first-child
-      color: #15d2fd
     img
       width: 20px
       height: 20px
@@ -232,3 +243,31 @@
   .auth-btns-signup:hover
     background: $cyan-1
 
+
+.nav-upgrade
+  display: flex
+  flex-direction: column
+  border-radius: 5px
+  padding: 20px
+  margin: 20px 0
+  text-align: center
+  color: #fff
+  background: rgb(29,206,219);
+  background: linear-gradient(158deg, rgba(29,206,219,1) 0%, rgba(166,134,247,1) 35%, rgba(241,121,108,1) 70%);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  
+  span
+    font-size: 16px
+  ul
+    color: #ddd
+
+  button
+    background: $light-blue
+    border: none
+    border-radius: 10px
+    height: 30px
+    margin-top: 10px
+    color: #fff
+
+.nav-playlist
+  border-top: 1px solid #fff

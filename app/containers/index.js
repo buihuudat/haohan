@@ -12,6 +12,7 @@ import ChartPage from './ChartPage';
 import LogInPage from './LogInPage';
 import SignUpPage from './SignUpPage';
 import UserPage from './UserPageContainer';
+import UserPlaylist from './UserPlaylist';
 import Modal from './Modal';
 
 export {
@@ -29,5 +30,6 @@ export {
   LogInPage,
   SignUpPage,
   UserPage,
+  UserPlaylist,
   Modal,
 };
