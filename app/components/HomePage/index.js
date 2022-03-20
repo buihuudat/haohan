@@ -5,7 +5,8 @@ import Chart from '../Chart';
 import Choices from './Choices';
 import { Carousel } from 'react-responsive-carousel';
 import LazyloadImage from '../LazyloadImage';
-import '../../../public/css/carousel.min.css'; // requires a loader
+
+import './carousel.sass';
 import './index.sass';
 
 class ChartPanel extends React.Component {

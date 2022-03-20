@@ -21,9 +21,9 @@ export default function (ComposedComponent) {
   }
 
   function mapStateToProps({ auth }) {
-    const { authenticated, user, email, avatar, phone, primary } = auth;
+    const { authenticated, user } = auth;
 
-    return { authenticated, user, email, phone, avatar, primary };
+    return { authenticated, user };
   }
 
   IsAuthenticated.propTypes = {
