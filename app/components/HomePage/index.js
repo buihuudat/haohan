@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import TrackList from './TrackList';
 import Chart from '../Chart';
 import Choices from './Choices';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import LazyloadImage from '../LazyloadImage';
+import '../../../public/css/carousel.min.css'; // requires a loader
 import './index.sass';
 
 class ChartPanel extends React.Component {
